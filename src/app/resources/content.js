@@ -113,8 +113,8 @@ const about = {
                 ],
                 images: [ // optional
                     {
-                        src: '/images/projects/project-02/cover-01.jpg',
-                        alt: 'Certified Tree Care Projects',
+                        src: '/images/work/ctclogo.png',
+                        alt: 'Certified Tree Care Logo',
                         width: 16,
                         height: 9
                     }
