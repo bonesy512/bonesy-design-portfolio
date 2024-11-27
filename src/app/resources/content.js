@@ -80,7 +80,7 @@ const about = {
         experiences: [
             {
                 company: 'Bonesy Design',
-                timeframe: '2014 - Present',
+                timeframe: 'September 2014 - Present',
                 role: 'Founder & Lead Designer',
                 achievements: [
                     <>Founded Bonesy Design to deliver creative solutions in UI/UX design, branding, and web development for diverse clients.</>,
@@ -91,8 +91,8 @@ const about = {
                 ],
                 images: [ // optional: leave the array empty if you don't want to display images
                     {
-                        src: '/images/projects/project-01/cover-01.jpg',
-                        alt: 'Project at Bonesy Design',
+                        src: '/images/work/BonesyDesign.png',
+                        alt: 'Bonesy Design Logotype',
                         width: 16,
                         height: 9
                     }
