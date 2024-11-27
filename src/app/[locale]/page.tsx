@@ -80,7 +80,7 @@ export default function Home(
 				paddingY="l" gap="m">
 					<Flex
 						direction="column"
-						fillWidth maxWidth="s" gap="m">
+						fillWidth maxWidth="m" gap="m">
 						<RevealFx
 							translateY="4">
 							<Heading
@@ -124,7 +124,6 @@ export default function Home(
 							</Flex>
 						</RevealFx>
 					</Flex>
-				
 			</Flex>
 			<RevealFx translateY="16" delay={0.6}>
 				<Projects range={[1,1]} locale={locale}/>
