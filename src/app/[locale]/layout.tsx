@@ -15,6 +15,8 @@ import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-in
 import { routing } from "@/i18n/routing";
 import { renderContent } from "@/app/resources";
 import { Background, Flex } from "@/once-ui/components";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export async function generateMetadata(
 	{ params: { locale }}: { params: { locale: string }}
@@ -131,6 +133,8 @@ export default async function RootLayout({
 							</RouteGuard>
 						</Flex>
 					</Flex>
+					<SpeedInsights />
+          			<Analytics /> {/* Add the Analytics component here */}
 					<Footer/>
 				</Flex>
 			</Flex>
