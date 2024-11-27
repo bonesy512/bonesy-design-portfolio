@@ -1,54 +1,57 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-    firstName: 'Selene',
-    lastName:  'Yu',
+    firstName: 'Thomas',
+    lastName:  'Schustereit',
     get name() {
         return `${this.firstName} ${this.lastName}`;
     },
-    role:      'Design Engineer',
+    role:      'Graphic Designer',
     avatar:    '/images/avatar.jpg',
-    location:  'Asia/Jakarta',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: ['English', 'Bahasa']  // optional: Leave the array empty if you don't want to display languages
+    location:  'America/Chicago',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: ['English']  // optional: Leave the array empty if you don't want to display languages
 }
 
 const newsletter = {
     display: true,
     title: <>Subscribe to {person.firstName}'s Newsletter</>,
-    description: <>I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering.</>
+    description: <>I occasionally write about design, technology, and share thoughts on the intersection of creativity and AI.</>
 }
 
 const social = [
-    // Links are automatically displayed.
-    // Import new icons in /once-ui/icons.ts
     {
         name: 'GitHub',
         icon: 'github',
-        link: 'https://github.com/once-ui-system/nextjs-starter',
+        link: 'https://github.com/bonesy512',
+    },
+    {
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/b0n3syeth/',
     },
     {
         name: 'LinkedIn',
         icon: 'linkedin',
-        link: 'https://www.linkedin.com/company/once-ui/',
+        link: 'https://www.linkedin.com/in/thomasmschustereit/',
     },
     {
         name: 'X',
         icon: 'x',
-        link: '',
+        link: 'https://x.com/B0N3SYeth',
     },
     {
         name: 'Email',
         icon: 'email',
-        link: 'mailto:example@gmail.com',
+        link: 'mailto:bonesy@bonesydesign.com',
     },
 ]
 
 const home = {
     label: 'Home',
     title: `${person.name}'s Portfolio`,
-    description: `Portfolio website showcasing my work as a ${person.role}`,
-    headline: <>Design engineer and builder</>,
-    subline: <>I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive<br/> user experiences. After hours, I build my own projects.</>
+    description: `${person.name}'s Portfolio website showcasing his work as Bonesy Design`,
+    headline: <>Bonesy Design</>,
+    subline: <>I'm Thomas Schustereit, the creative force behind <InlineCode>Bonesy Design</InlineCode>. I specialize in crafting seamless and intuitive user experiences. Outside of my professional work, I also bring my own ideas to life through personal projects.</>
 }
 
 const about = {
@@ -69,43 +72,58 @@ const about = {
     intro: {
         display: true,
         title: 'Introduction',
-        description: <>Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology.</>
+        description: <>Thomas is a graphic designer based in the United States, driven by a passion for turning complex problems into clean, intuitive design solutions. His work spans across digital interfaces, interactive experiences, and the intersection of design and emerging technologies, always focusing on creating seamless user experiences.</>
     },
     work: {
         display: true, // set to false to hide this section
         title: 'Work Experience',
         experiences: [
             {
-                company: 'FLY',
-                timeframe: '2022 - Present',
-                role: 'Senior Design Engineer',
+                company: 'Bonesy Design',
+                timeframe: '2014 - Present',
+                role: 'Founder & Lead Designer',
                 achievements: [
-                    <>Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.</>,
-                    <>Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.</>
+                    <>Founded Bonesy Design to deliver creative solutions in UI/UX design, branding, and web development for diverse clients.</>,
+                    <>Collaborated with clients to transform their vision into functional and visually appealing digital experiences.</>,
+                    <>Specialized in building intuitive user interfaces and seamless user experiences across web and mobile platforms.</>,
+                    <>Led design projects from concept through execution, providing a complete design strategy for clients, from startups to established brands.</>,
+                    <>Developed a custom design system for multiple clients, improving consistency and user interaction by 30%.</>
                 ],
                 images: [ // optional: leave the array empty if you don't want to display images
                     {
                         src: '/images/projects/project-01/cover-01.jpg',
-                        alt: 'Once UI Project',
+                        alt: 'Project at Bonesy Design',
                         width: 16,
                         height: 9
                     }
                 ]
             },
             {
-                company: 'Creativ3',
-                timeframe: '2018 - 2022',
-                role: 'Lead Designer',
+                company: 'Certified Tree Care LLC',
+                timeframe: 'March 2012 - June 2024',
+                role: 'Chief Development Officer',
                 achievements: [
-                    <>Developed a design system that unified the brand across multiple platforms, improving design consistency by 40%.</>,
-                    <>Led a cross-functional team to launch a new product line, contributing to a 15% increase in overall company revenue.</>
+                    <>Spearheaded IT initiatives, enhancing system efficiencies and driving digital transformation, resulting in more streamlined reporting and improved operational processes.</>,
+                    <>Led the integration of Quickbase CRM and Encore Actsoft, increasing operational efficiency by 20% and improving data management across multiple locations.</>,
+                    <>Developed and executed strategic business development plans, leading to substantial revenue growth and market expansion in cities such as Austin, San Antonio, Houston, Dallas, and Louisville.</>,
+                    <>Implemented a comprehensive digital marketing strategy, including SEO, social media, and content creation, boosting online leads by 30%.</>,
+                    <>Directed cross-functional teams and sales training programs, leveraging tools like Cardone U to enhance team performance and achieve business targets.</>,
+                    <>Coordinated the launch of new services, diversifying the company’s offerings and increasing overall revenue streams.</>,
+                    <>Led safety programs and risk assessments, ensuring regulatory compliance and significantly reducing incident rates.</>
                 ],
-                images: [ ]
+                images: [ // optional
+                    {
+                        src: '/images/projects/project-02/cover-01.jpg',
+                        alt: 'Certified Tree Care Projects',
+                        width: 16,
+                        height: 9
+                    }
+                ]
             }
         ]
     },
     studies: {
-        display: true, // set to false to hide this section
+        display: false, // set to false to hide this section
         title: 'Studies',
         institutions: [
             {
