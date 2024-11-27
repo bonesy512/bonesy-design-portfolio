@@ -57,7 +57,7 @@ const display = {
 }
 
 const mailchimp = {
-    action: 'https://url/subscribe/post?parameters',
+    action: 'https://bonesydesign.us11.list-manage.com/subscribe/post?u=e7ad1ec1e95ae18832f487a41&amp;id=7182cbf5d5&amp;f_id=00f1c2e1f0',
     effects: {
         mask: 'topRight',           // none | cursor | topLeft | topRight | bottomLeft | bottomRight
         gradient: {
