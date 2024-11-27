@@ -136,84 +136,42 @@ const about = {
             }
         ]
     },
-    technical = {
+    technical: {
         display: true, // set to false to hide this section
         title: 'Technical skills',
         skills: [
             {
-                title: 'Adobe Creative Cloud',
-                description: <>Expert in utilizing Adobe Creative Cloud to craft high-quality designs for digital and print media.</>,
+                title: 'Figma',
+                description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
                 images: [
                     {
-                        src: '/images/skills/adobe.jpeg',
-                        alt: 'Adobe Creative Cloud',
+                        src: '/images/projects/project-01/cover-02.jpg',
+                        alt: 'Project image',
+                        width: 16,
+                        height: 9
+                    },
+                    {
+                        src: '/images/projects/project-01/cover-03.jpg',
+                        alt: 'Project image',
                         width: 16,
                         height: 9
                     },
                 ]
             },
             {
-                title: 'Figma (with Once UI)',
-                description: <>Proficient in rapid prototyping with Figma, leveraging Once UI to streamline design processes and create intuitive user experiences.</>,
+                title: 'Next.js',
+                description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
                 images: [
                     {
-                        src: '/images/skills/Figma.jpg',
-                        alt: 'Figma with Once UI',
-                        width: 16,
-                        height: 9
-                    },
-                ]
-            },
-            {
-                title: 'Blender',
-                description: <>Skilled in 3D modeling and rendering with Blender, creating visually compelling graphics and animations.</>,
-                images: [
-                    {
-                        src: '/images/skills/blender_logo.png',
-                        alt: 'Blender Logo',
-                        width: 16,
-                        height: 9
-                    },
-                ]
-            },
-            {
-                title: 'Slack',
-                description: <>Experienced with Slack for team communication and project management, enhancing collaboration across cross-functional teams.</>,
-                images: [
-                    {
-                        src: '/images/skills/slack.png',
-                        alt: 'Slack Logo',
-                        width: 16,
-                        height: 9
-                    },
-                ]
-            },
-            {
-                title: 'VScode',
-                description: <>Efficient in using VS Code for web development, with advanced proficiency in coding and debugging, especially in JavaScript and React.</>,
-                images: [
-                    {
-                        src: '/images/skills/vscode.png',
-                        alt: 'VS Code Logo',
-                        width: 16,
-                        height: 9
-                    },
-                ]
-            },
-            {
-                title: 'GitHub',
-                description: <>Utilize GitHub for version control, collaborative coding, and managing complex development workflows.</>,
-                images: [
-                    {
-                        src: '/images/skills/github.png',
-                        alt: 'GitHub Logo',
+                        src: '/images/projects/project-01/cover-04.jpg',
+                        alt: 'Project image',
                         width: 16,
                         height: 9
                     },
                 ]
             }
         ]
-    };
+    }
 }
 
 const blog = {
