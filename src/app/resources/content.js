@@ -194,75 +194,75 @@ const gallery = {
     label: 'Gallery',
     title: 'My photo gallery',
     description: `A photo collection by ${person.name}`,
-    // Images from https://pexels.com
+    // Images from https://bonesydesign.com
     images: [
         { 
-            src: '/images/gallery/img-01.jpg', 
+            src: '/images/gallery/smooth-reflection-austin-texas-downtown-city-skyli-2024-09-13-16-22-02-utc.jpg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-02.jpg', 
+            src: '/images/gallery/54955-aerial-view-of-las-vegas-cityscape-lit-up-at-2023-11-27-05-29-42-utc.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-03.jpg', 
+            src: '/images/gallery/texas-bluebonnets-on-a-hill-with-windmill-in-backg-2023-11-27-05-14-09-utc.jpg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-04.jpg', 
+            src: '/images/gallery/aerial-view-of-a-highway-passing-through-a-desert-2023-11-27-05-09-26-utc.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-05.jpg', 
+            src: '/images/gallery/austin-city-skyline-near-first-street-bridge-color-2024-09-15-15-51-37-utc.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-06.jpg', 
+            src: '/images/gallery/vertical-shot-of-texas-state-capitol-in-austin-te-2023-11-27-05-32-07-utc.jpg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-07.jpg', 
+            src: '/images/gallery/austin-texas-usa-downtown-city-skyline-on-the-co-2023-11-27-04-59-39-utc.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-08.jpg', 
+            src: '/images/gallery/vertical-shot-of-the-beautiful-park-and-buildings-2023-11-27-05-03-31-utc.jpg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-09.jpg', 
+            src: '/images/gallery/charging-pile-with-chargers-and-part-of-black-elec-2023-11-27-05-18-10-utc.JPG', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-10.jpg', 
+            src: '/images/gallery/marketing-strategy-planning-strategy-concept-2023-11-27-04-52-44-utc.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-11.jpg', 
+            src: '/images/gallery/high-angle-vertical-shot-of-a-black-and-white-inte-2023-11-27-05-06-20-utc.jpeg', 
             alt: 'image',
             orientation: 'vertical'
         },
         { 
-            src: '/images/gallery/img-12.jpg', 
+            src: '/images/gallery/night-scene-with-the-milky-way-2023-11-27-04-57-48-utc.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-13.jpg', 
+            src: '/images/gallery/old-windmill-with-trees-and-bluebonnets-in-the-tex-2023-11-27-05-30-53-utc.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
         { 
-            src: '/images/gallery/img-14.jpg', 
+            src: '/images/gallery/robot-hand-finger-pointing-ai-technology-backgrou-2023-11-27-05-33-55-utc.jpg', 
             alt: 'image',
             orientation: 'horizontal'
         },
