@@ -127,6 +127,7 @@ export default function Home(
 			</Flex>
 			<RevealFx translateY="16" delay={0.6}>
 				<Projects range={[1,1]} locale={locale}/>
+				<div class="contra-hire-me-button" data-analyticsUserId="4572f420-2c72-49f4-a0bc-35e25cb5143e" data-theme="dark" data-username="bonesydesign"></div><script async src="https://contra.com/static/embed/sdk.js" charset="utf-8"></script>
 			</RevealFx>
 			{routes['/blog'] && (
 				<Flex
