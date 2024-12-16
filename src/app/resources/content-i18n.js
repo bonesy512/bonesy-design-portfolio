@@ -1,234 +1,179 @@
 import { InlineCode } from "@/once-ui/components";
 
-const createI18nContent = (t) => {
-  const person = {
+// Define person details
+const person = {
     firstName: "Thomas",
     lastName: "Schustereit",
     get name() {
-      return `${this.firstName} ${this.lastName}`;
+        return `${this.firstName} ${this.lastName}`;
     },
-    role: t("person.role"),
+    role: "Graphic Designer",
     avatar: "/images/avatar.jpg",
-    location: "America/Chicago", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-    languages: ["English"], // optional: Leave the array empty if you don't want to display languages
-  };
-
-  const newsletter = {
-    display: true,
-    title: <>{t("newsletter.title", { firstName: person.firstName })}</>,
-    description: <>{t("newsletter.description")}</>,
-  };
-
-  const social = [
-    // Links are automatically displayed.
-    // Import new icons in /once-ui/icons.ts
-    {
-      name: "GitHub",
-      icon: "github",
-      link: "https://github.com/once-ui-system/nextjs-starter",
-    },
-    {
-      name: "LinkedIn",
-      icon: "linkedin",
-      link: "https://www.linkedin.com/company/once-ui/",
-    },
-    {
-      name: "X",
-      icon: "x",
-      link: "",
-    },
-    {
-      name: "Email",
-      icon: "email",
-      link: "mailto:example@gmail.com",
-    },
-  ];
-
-  const home = {
-    label: t("home.label"),
-    title: t("home.title", { name: person.name }),
-    description: t("home.description", { role: person.role }),
-    headline: <>{t("home.headline")}</>,
-    subline: <>{t("home.subline")}</>,
-  };
-
-  const about = {
-    label: t("about.label"),
-    title: t("about.title"),
-    description: t("about.description", {
-      name: person.name,
-      role: person.role,
-      location: person.location,
-    }),
-    tableOfContent: {
-      display: true,
-      subItems: true,
-    },
-    avatar: {
-      display: true,
-    },
-    calendar: {
-      display: true,
-      link: "https://cal.com",
-    },
-    intro: {
-      display: true,
-      title: t("about.intro.title"),
-      description: <>{t("about.intro.description")}</>,
-    },
-    work: {
-      display: true, // set to false to hide this section
-      title: t("about.work.title"),
-      experiences: [
-        {
-          company: "FLY",
-          timeframe: t("about.work.experiences.FLY.timeframe"),
-          role: t("about.work.experiences.FLY.role"),
-          achievements: t("about.work.experiences.FLY.achievements").split(";"),
-          images: [
-            {
-              src: "/images/projects/project-01/cover-01.jpg",
-              alt: "Once UI Project",
-              width: 16,
-              height: 9,
-            },
-          ],
-        },
-        {
-          company: "Creativ3",
-          timeframe: t("about.work.experiences.Creativ3.timeframe"),
-          role: t("about.work.experiences.Creativ3.role"),
-          achievements: t("about.work.experiences.Creativ3.achievements").split(
-            ";"
-          ),
-          images: [],
-        },
-      ],
-    },
-    studies: {
-      display: true, // set to false to hide this section
-      title: "Studies",
-      institutions: [
-        {
-          name: "University of Jakarta",
-          description: (
-            <>{t(`about.studies.institutions.University of Jakarta.description`)}</>
-          ),
-        },
-        {
-          name: "Build the Future",
-          description: (
-            <>{t("about.studies.institutions.Build the Future.description")}</>
-          ),
-        },
-      ],
-    },
-    technical: {
-      display: true, // set to false to hide this section
-      title: t("about.technical.title"),
-      skills: [
-        {
-          title: "Figma",
-          description: <>{t("about.technical.skills.Figma.description")}</>,
-          images: [
-            {
-              src: "/images/projects/project-01/cover-02.jpg",
-              alt: "Project image",
-              width: 16,
-              height: 9,
-            },
-            {
-              src: "/images/projects/project-01/cover-03.jpg",
-              alt: "Project image",
-              width: 16,
-              height: 9,
-            },
-          ],
-        },
-        {
-          title: "Next.js",
-          description: (
-            <>{t("about.technical.skills.Nextjs.description")}</> // "." not accepted in next-intl namespace
-          ),
-          images: [
-            {
-              src: "/images/projects/project-01/cover-04.jpg",
-              alt: "Project image",
-              width: 16,
-              height: 9,
-            },
-          ],
-        },
-      ],
-    },
-  };
-
-  const admin = {
-    label: t("admin.label"),
-    title: t("admin.title"),
-    description: t("admin.description"),
-    sections: [
-      {
-        title: t("admin.sections.liveTrade.title"),
-        description: t("admin.sections.liveTrade.description"),
-      },
-      {
-        title: t("admin.sections.marketSentiment.title"),
-        description: t("admin.sections.marketSentiment.description"),
-      },
-      {
-        title: t("admin.sections.alerts.title"),
-        description: t("admin.sections.alerts.description"),
-      },
-    ],
-  };
-
-  const blog = {
-    label: t("blog.label"),
-    title: t("blog.title"),
-    description: t("blog.description", { name: person.name }),
-  };
-
-  const work = {
-    label: t("work.label"),
-    title: t("work.title"),
-    description: t("work.description", { name: person.name }),
-  };
-
-  const gallery = {
-    label: t("gallery.label"),
-    title: t("gallery.title"),
-    description: t("gallery.description", { name: person.name }),
-    images: [
-      {
-        src: "/images/gallery/img-01.jpg",
-        alt: "image",
-        orientation: "vertical",
-      },
-      {
-        src: "/images/gallery/img-02.jpg",
-        alt: "image",
-        orientation: "horizontal",
-      },
-      {
-        src: "/images/gallery/img-03.jpg",
-        alt: "image",
-        orientation: "vertical",
-      },
-    ],
-  };
-
-  return {
-    person,
-    social,
-    newsletter,
-    home,
-    about,
-    blog,
-    work,
-    gallery,
-    admin, // Add the admin object to the returned content
-  };
+    location: "America/Chicago", // IANA time zone identifier
+    languages: ["English"], // Leave empty if not needed
 };
 
-export { createI18nContent };
+// Newsletter configuration
+const newsletter = {
+    display: true,
+    title: `Subscribe to ${person.firstName}'s Newsletter`,
+    description:
+        "I occasionally write about design, technology, and share thoughts on the intersection of creativity and AI.",
+};
+
+// Social links
+const social = [
+    { name: "GitHub", icon: "github", link: "https://github.com/bonesy512" },
+    { name: "Instagram", icon: "instagram", link: "https://www.instagram.com/b0n3syeth/" },
+    { name: "LinkedIn", icon: "linkedin", link: "https://www.linkedin.com/in/thomasmschustereit/" },
+    { name: "X", icon: "x", link: "https://x.com/B0N3SYeth" },
+    { name: "Email", icon: "email", link: "mailto:bonesy@bonesydesign.com" },
+];
+
+// Home page content
+const home = {
+    label: "Home",
+    title: `${person.name}'s Portfolio`,
+    description: `${person.name}'s portfolio showcasing his work at Bonesy Design.`,
+    headline: "Bonesy Design",
+    subline: (
+        <>
+            I'm {person.name}, the creative force behind <InlineCode>Bonesy Design</InlineCode>. 
+            I specialize in crafting seamless user experiences and bringing innovative ideas to life.
+        </>
+    ),
+};
+
+// About page content
+const about = {
+    label: "About",
+    title: "About Me",
+    description: `Meet ${person.name}, ${person.role} from ${person.location}.`,
+    tableOfContent: { display: true, subItems: false },
+    avatar: { display: true },
+    calendar: { display: true, link: "https://cal.com" },
+    intro: {
+        display: true,
+        title: "Introduction",
+        description: (
+            <>
+                {person.name} is a graphic designer based in the United States, driven by a passion 
+                for turning complex problems into clean, intuitive design solutions. His work spans 
+                across digital interfaces, interactive experiences, and design innovation.
+            </>
+        ),
+    },
+    work: {
+        display: true,
+        title: "Work Experience",
+        experiences: [
+            {
+                company: "Bonesy Design",
+                timeframe: "September 2014 - Present",
+                role: "Founder & Lead Designer",
+                achievements: [
+                    <>Founded Bonesy Design to deliver creative solutions in UI/UX, branding, and web development.</>,
+                    <>Collaborated with clients to create functional and visually appealing digital experiences.</>,
+                    <>Specialized in building seamless user interfaces across web and mobile platforms.</>,
+                    <>Developed a custom design system, improving interaction consistency by 30%.</>,
+                ],
+                images: [
+                    {
+                        src: "/images/work/BonesyDesign.png",
+                        alt: "Bonesy Design Logotype",
+                        width: 16,
+                        height: 9,
+                    },
+                ],
+            },
+            {
+                company: "Certified Tree Care LLC",
+                timeframe: "March 2012 - June 2024",
+                role: "Chief Development Officer",
+                achievements: [
+                    <>Led IT initiatives, enhancing operational efficiencies and digital transformation.</>,
+                    <>Implemented CRM and Actsoft systems, increasing efficiency by 20%.</>,
+                    <>Developed marketing strategies that boosted leads by 30%.</>,
+                    <>Launched safety programs, significantly reducing workplace incidents.</>,
+                ],
+                images: [
+                    {
+                        src: "/images/work/ctclogo.png",
+                        alt: "Certified Tree Care Logo",
+                        width: 16,
+                        height: 9,
+                    },
+                ],
+            },
+        ],
+    },
+    studies: {
+        display: false,
+        title: "Studies",
+        institutions: [
+            { name: "University of Jakarta", description: "Studied software engineering." },
+            { name: "Build the Future", description: "Studied online marketing and personal branding." },
+        ],
+    },
+    technical: {
+        display: true,
+        title: "Technical Skills",
+        skills: [
+            {
+                title: "Figma",
+                description: "Proficient in prototyping and leveraging Figma for UI/UX design.",
+                images: [
+                    { src: "/images/projects/project-01/cover-02.jpg", alt: "Figma Project", width: 16, height: 9 },
+                ],
+            },
+            {
+                title: "Next.js",
+                description: "Building apps with Next.js, Supabase, and Once UI.",
+                images: [
+                    { src: "/images/projects/project-01/cover-04.jpg", alt: "Next.js Project", width: 16, height: 9 },
+                ],
+            },
+        ],
+    },
+};
+
+// Blog content
+const blog = {
+    label: "Blog",
+    title: "Writing about design and tech...",
+    description: `Read what ${person.name} has been up to recently.`,
+};
+
+// Work content
+const work = {
+    label: "Work",
+    title: "My Projects",
+    description: `Explore design and dev projects by ${person.name}.`,
+};
+
+// Gallery content
+const gallery = {
+    label: "Gallery",
+    title: "My Photo Gallery",
+    description: `A curated collection of photos by ${person.name}.`,
+    images: [
+        { src: "/images/gallery/54955-aerial-view-of-las-vegas-cityscape-lit-up-at-2023-11-27-05-29-42-utc.jpg", alt: "Image 1", orientation: "horizontal" },
+        { src: "/images/gallery/austin-city-skyline-near-first-street-bridge-color-2024-09-15-15-51-37-utc.jpg", alt: "Image 2", orientation: "horizontal" },
+        { src: "/images/gallery/texas-bluebonnets-on-a-hill-with-windmill-in-backg-2023-11-27-05-14-09-utc.jpg", alt: "Image 3", orientation: "vertical" },
+    ],
+};
+
+// Admin dashboard content
+const admin = {
+    label: "Admin",
+    title: "Admin Dashboard",
+    description: "Manage and monitor your projects.",
+    sections: [
+        { title: "Live Trade Insights", description: "Track trading updates and key performance metrics." },
+        { title: "Market Sentiment", description: "Analyze sentiment trends from financial news." },
+        { title: "Alerts", description: "Receive notifications for opportunities." },
+    ],
+};
+
+// Export all content
+export { person, social, newsletter, home, about, blog, work, gallery, admin };

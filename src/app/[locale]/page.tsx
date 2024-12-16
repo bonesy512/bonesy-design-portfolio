@@ -21,8 +21,8 @@ export async function generateMetadata({
 }: {
     params: { locale: string };
 }): Promise<Metadata> {
-    const t = await getTranslations(params.locale); // Await params.locale properly
-    const { home = {} } = renderContent(t) || {}; // Handle renderContent safely
+    const t = await getTranslations(params.locale); // Properly fetch translations
+    const { home = {} } = renderContent(t) || {}; // Safely handle missing content
     const title = home.title || 'Default Home Title';
     const description = home.description || 'Default Home Description';
     const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -51,9 +51,9 @@ export default async function Home({
 }: {
     params: { locale: string };
 }) {
-    const t = await getTranslations(params.locale); // Await params.locale
+    const t = await getTranslations(params.locale);
     const { home = {}, about = {}, person = {}, newsletter = {} } =
-        renderContent(t) || {}; // Handle renderContent safely
+        renderContent(t) || {}; // Safely handle potential undefined values
 
     return (
         <Flex
