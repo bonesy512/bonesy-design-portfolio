@@ -6,30 +6,31 @@ import { routing } from "./i18n/routing";
 const intlMiddleware = createMiddleware(routing);
 
 export default async function middleware(req) {
-  // Handle localization middleware first
-  const response = intlMiddleware(req);
+    // Handle localization middleware first
+    const response = intlMiddleware(req);
 
-  // Check for authentication on protected routes
-  const protectedRoutes = ["/admin/dashboard"];
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+    // Protected routes for authentication
+    const protectedRoutes = ["/admin/dashboard"];
+    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
-  const isProtectedRoute = protectedRoutes.some((path) =>
-    req.nextUrl.pathname.startsWith(path)
-  );
+    const isProtectedRoute = protectedRoutes.some((path) =>
+        req.nextUrl.pathname.startsWith(path)
+    );
 
-  if (isProtectedRoute && !token) {
-    return NextResponse.redirect(new URL("/admin", req.url));
-  }
+    if (isProtectedRoute && !token) {
+        // Redirect to admin login page if token is missing
+        return NextResponse.redirect(new URL("/admin", req.url));
+    }
 
-  return response;
+    // Return response after middleware processing
+    return response;
 }
 
 export const config = {
-  matcher: [
-    // Match internationalized pathnames and admin routes
-    "/",
-    "/((?!api|_next|_vercel|.*\\..*).*)",
-    "/(en|id)/:path*",
-    "/admin/:path*",
-  ],
+    matcher: [
+        "/", // Root path
+        "/((?!api|_next|_vercel|.*\\..*).*)", // Match all except API, Next.js internal paths, or static files
+        "/(en|id)/:path*", // Locale-based paths
+        "/admin/:path*", // Admin-related paths
+    ],
 };

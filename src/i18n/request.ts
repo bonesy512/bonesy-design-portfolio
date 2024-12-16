@@ -3,20 +3,26 @@ import { getRequestConfig } from 'next-intl/server';
 import { routing } from './routing';
 
 export default getRequestConfig(async ({ locale }) => {
-    try {
-        // Validate that the incoming `locale` parameter is valid
-        if (!routing.locales.includes(locale as any)) {
-            notFound();
-        }
+    // Validate that the incoming `locale` parameter is valid
+    if (!routing.locales.includes(locale as any)) {
+        console.error(`Invalid locale detected: ${locale}`);
+        notFound(); // Return a 404 if the locale is invalid
+    }
 
-        // Dynamically import the locale messages
-        const messages = await import(`../../messages/${locale}.json`);
-        
+    try {
+        // Attempt to load the messages for the requested locale
+        const messages = (await import(`../../messages/${locale}.json`)).default;
+
+        // Log success for debugging purposes
+        console.log(`Successfully loaded messages for locale: ${locale}`);
         return {
-            messages: messages.default
+            messages,
         };
     } catch (error) {
-        console.error(`Error loading messages for locale: ${locale}`, error);
-        notFound();
+        // Log error for easier debugging
+        console.error(`Failed to load messages for locale "${locale}":`, error.message);
+        
+        // Return a descriptive error for better developer experience
+        throw new Error(`Could not load messages for locale "${locale}". Please ensure the corresponding JSON file exists and is valid.`);
     }
 });

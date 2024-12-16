@@ -1,103 +1,121 @@
-import { ImageResponse } from 'next/og'
-import { baseURL, renderContent } from '@/app/resources';
+import { ImageResponse } from 'next/og';
+import { baseURL } from '@/app/resources';
 import { getTranslations } from 'next-intl/server';
+import { createI18nContent } from '@/app/resources/content-i18n';
 
 export const runtime = 'edge';
 
 export async function GET(request: Request) {
-    let url = new URL(request.url)
-    let title = url.searchParams.get('title') || 'Portfolio'
-    const font = fetch(
-        new URL('../../../public/fonts/Inter.ttf', import.meta.url)
-    ).then((res) => res.arrayBuffer());
-    const fontData = await font;
+    const url = new URL(request.url);
+    const title = url.searchParams.get('title') || 'Portfolio';
 
-    const t = await getTranslations();
-    const { person } = renderContent(t);
+    try {
+        // Load font
+        const font = fetch(
+            new URL('../../../public/fonts/Inter.ttf', import.meta.url)
+        ).then((res) => res.arrayBuffer());
+        const fontData = await font;
 
-    return new ImageResponse(
-        (
-            <div
-                style={{
-                    display: 'flex',
-                    width: '100%',
-                    height: '100%',
-                    padding: '8rem',
-                    background: '#151515',
-                }}>
+        // Load translations
+        const t = await getTranslations();
+        const { person } = createI18nContent(t);
+
+        if (!person || !person.avatar || !person.name || !person.role) {
+            console.error('Missing or incomplete person details in translations:', person);
+            throw new Error('Invalid content in translations');
+        }
+
+        // Generate Open Graph image
+        return new ImageResponse(
+            (
                 <div
                     style={{
                         display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        gap: '4rem',
-                        fontFamily: 'Inter',
-                        fontStyle: 'normal',
-                        color: 'white',
+                        width: '100%',
+                        height: '100%',
+                        padding: '8rem',
+                        background: '#151515',
                     }}>
-                    <span
-                        style={{
-                            fontSize: '8rem',
-                            lineHeight: '8rem',
-                            letterSpacing: '-0.05em',
-                            whiteSpace: 'pre-wrap',
-                            textWrap: 'balance',
-                        }}>
-                        {title}
-                    </span>
                     <div
                         style={{
                             display: 'flex',
-                            alignItems: 'center',
-                            gap: '5rem'
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            gap: '4rem',
+                            fontFamily: 'Inter',
+                            fontStyle: 'normal',
+                            color: 'white',
                         }}>
-                        <img src={'https://' + baseURL + person.avatar}
+                        <span
                             style={{
-                                width: '12rem',
-                                height: '12rem',
-                                objectFit: 'cover',
-                                borderRadius: '100%',
-                            }}/>
+                                fontSize: '8rem',
+                                lineHeight: '8rem',
+                                letterSpacing: '-0.05em',
+                                whiteSpace: 'pre-wrap',
+                                textWrap: 'balance',
+                            }}>
+                            {title}
+                        </span>
                         <div
                             style={{
                                 display: 'flex',
-                                flexDirection: 'column',
-                                gap: '0.75rem'
+                                alignItems: 'center',
+                                gap: '5rem',
                             }}>
-                            <span
+                            <img
+                                src={`https://${baseURL}${person.avatar}`}
+                                alt={`${person.name}'s avatar`}
                                 style={{
-                                    fontSize: '4.5rem',
-                                    lineHeight: '4.5rem',
-                                    whiteSpace: 'pre-wrap',
-                                    textWrap: 'balance',
-                                }}>
-                                {person.name}
-                            </span>
-                            <span
+                                    width: '12rem',
+                                    height: '12rem',
+                                    objectFit: 'cover',
+                                    borderRadius: '100%',
+                                }}
+                            />
+                            <div
                                 style={{
-                                    fontSize: '2.5rem',
-                                    lineHeight: '2.5rem',
-                                    whiteSpace: 'pre-wrap',
-                                    textWrap: 'balance',
-                                    opacity: '0.6'
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '0.75rem',
                                 }}>
-                                {person.role}
-                            </span>
+                                <span
+                                    style={{
+                                        fontSize: '4.5rem',
+                                        lineHeight: '4.5rem',
+                                        whiteSpace: 'pre-wrap',
+                                        textWrap: 'balance',
+                                    }}>
+                                    {person.name}
+                                </span>
+                                <span
+                                    style={{
+                                        fontSize: '2.5rem',
+                                        lineHeight: '2.5rem',
+                                        whiteSpace: 'pre-wrap',
+                                        textWrap: 'balance',
+                                        opacity: '0.6',
+                                    }}>
+                                    {person.role}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        ),
-        {
-            width: 1920,
-            height: 1080,
-            fonts: [
-                {
-                    name: 'Inter',
-                    data: fontData,
-                    style: 'normal',
-                },
-              ],
-        }
-    )
+            ),
+            {
+                width: 1920,
+                height: 1080,
+                fonts: [
+                    {
+                        name: 'Inter',
+                        data: fontData,
+                        style: 'normal',
+                    },
+                ],
+            }
+        );
+    } catch (error) {
+        console.error('Error generating Open Graph image:', error);
+        return new Response('Internal Server Error', { status: 500 });
+    }
 }
