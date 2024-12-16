@@ -108,6 +108,11 @@
         "title": "My photo gallery",
         "description": "A photo collection by {name}"
     },
+    "dashboard": {
+        "label": "Dashboard",
+        "title": "My forex dashboard",
+        "description": "A forex dashboard for {name}"
+    },
     "admin": {
         "label": "Admin",
         "title": "Admin Dashboard",
