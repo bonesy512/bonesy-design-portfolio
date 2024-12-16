@@ -8,14 +8,15 @@ const person = {
     },
     role: "Graphic Designer",
     avatar: "/images/avatar.jpg",
-    location: "America/Chicago",
-    languages: ["English"],
+    location: "America/Chicago", // IANA time zone identifier
+    languages: ["English"], // Leave empty if not needed
 };
 
 const newsletter = {
     display: true,
-    title: `Subscribe to ${person.firstName}'s Newsletter`,
-    description: "I occasionally write about design, technology, and share thoughts on the intersection of creativity and AI.",
+    title: `Subscribe to ${person.firstName}&#39;s Newsletter`,
+    description:
+        "I occasionally write about design, technology, and share thoughts on the intersection of creativity and AI.",
 };
 
 const social = [
@@ -28,12 +29,12 @@ const social = [
 
 const home = {
     label: "Home",
-    title: `${person.name}'s Portfolio`,
-    description: `${person.name}'s portfolio showcasing his work at Bonesy Design.`,
+    title: `${person.name}&#39;s Portfolio`,
+    description: `${person.name}&#39;s portfolio showcasing his work at Bonesy Design.`,
     headline: "Bonesy Design",
     subline: (
         <>
-            I'm {person.name}, the creative force behind <InlineCode>Bonesy Design</InlineCode>.
+            I&#39;m {person.name}, the creative force behind <InlineCode>Bonesy Design</InlineCode>. 
             I specialize in crafting seamless user experiences and bringing innovative ideas to life.
         </>
     ),
@@ -49,72 +50,14 @@ const about = {
     intro: {
         display: true,
         title: "Introduction",
-        description: `${person.name} is a graphic designer driven by a passion for intuitive design solutions.`,
+        description: (
+            <>
+                {person.name} is a graphic designer based in the United States, driven by a passion 
+                for turning complex problems into clean, intuitive design solutions. His work spans 
+                across digital interfaces, interactive experiences, and design innovation.
+            </>
+        ),
     },
-    work: {
-        display: true,
-        title: "Work Experience",
-        experiences: [
-            {
-                company: "Bonesy Design",
-                timeframe: "September 2014 - Present",
-                role: "Founder & Lead Designer",
-                achievements: [
-                    "Founded Bonesy Design to deliver creative solutions in UI/UX, branding, and web development.",
-                    "Collaborated with clients to create functional and visually appealing digital experiences.",
-                    "Specialized in building seamless user interfaces across web and mobile platforms.",
-                ],
-                images: [{ src: "/images/work/BonesyDesign.png", alt: "Bonesy Design Logotype", width: 16, height: 9 }],
-            },
-            {
-                company: "Certified Tree Care LLC",
-                timeframe: "March 2012 - June 2024",
-                role: "Chief Development Officer",
-                achievements: [
-                    "Led IT initiatives, enhancing operational efficiencies and digital transformation.",
-                    "Implemented CRM and Actsoft systems, increasing efficiency by 20%.",
-                ],
-                images: [{ src: "/images/work/ctclogo.png", alt: "Certified Tree Care Logo", width: 16, height: 9 }],
-            },
-        ],
-    },
-    studies: {
-        display: false,
-        title: "Studies",
-        institutions: [
-            { name: "University of Jakarta", description: "Studied software engineering." },
-            { name: "Build the Future", description: "Studied online marketing and personal branding." },
-        ],
-    },
-    technical: {
-        display: true,
-        title: "Technical Skills",
-        skills: [
-            {
-                title: "Figma",
-                description: "Proficient in prototyping and leveraging Figma for UI/UX design.",
-                images: [{ src: "/images/projects/project-01/cover-02.jpg", alt: "Figma Project", width: 16, height: 9 }],
-            },
-        ],
-    },
-};
-
-const blog = {
-    label: "Blog",
-    title: "Writing about design and tech...",
-    description: `Read what ${person.name} has been up to recently.`,
-};
-
-const work = {
-    label: "Work",
-    title: "My Projects",
-    description: `Explore design and dev projects by ${person.name}.`,
-};
-
-const gallery = {
-    label: "Gallery",
-    title: "My Photo Gallery",
-    description: `A curated collection of photos by ${person.name}.`,
 };
 
 const admin = {
@@ -128,35 +71,4 @@ const admin = {
     ],
 };
 
-// Export structured content for i18n compatibility
-export const createI18nContent = (t) => ({
-    person,
-    newsletter,
-    social,
-    home: {
-        label: t("home.label"),
-        title: t("home.title", { name: person.name }),
-        description: t("home.description", { role: person.role }),
-    },
-    about: {
-        label: t("about.label"),
-        title: t("about.title"),
-        description: t("about.description", { name: person.name, role: person.role, location: person.location }),
-    },
-    blog: {
-        label: t("blog.label"),
-        title: t("blog.title"),
-        description: t("blog.description", { name: person.name }),
-    },
-    work: {
-        label: t("work.label"),
-        title: t("work.title"),
-        description: t("work.description", { name: person.name }),
-    },
-    gallery: {
-        label: t("gallery.label"),
-        title: t("gallery.title"),
-        description: t("gallery.description", { name: person.name }),
-    },
-    admin,
-});
+export { person, social, newsletter, home, about, admin };
