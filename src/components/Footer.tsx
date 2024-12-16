@@ -1,42 +1,52 @@
 import { renderContent } from "@/app/resources";
-import { Flex, IconButton, SmartLink, Text } from "@/once-ui/components"
+import { Flex, IconButton, SmartLink, Text } from "@/once-ui/components";
 import { useTranslations } from "next-intl";
-import styles from './Footer.module.scss'
+import styles from './Footer.module.scss';
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
 
+    // Get translations
     const t = useTranslations();
-    const { person, social } = renderContent(t);
+
+    // Pass translations (t) to renderContent
+    const { person = {}, social = [] } = renderContent(t);
 
     return (
         <Flex
             as="footer"
             position="relative"
-            fillWidth padding="8"
-            justifyContent="center" mobileDirection="column">
+            fillWidth
+            padding="8"
+            justifyContent="center"
+            mobileDirection="column"
+        >
             <Flex
                 className={styles.mobile}
-                fillWidth maxWidth="m" paddingY="8" paddingX="16" gap="16"
-                justifyContent="space-between" alignItems="center">
+                fillWidth
+                maxWidth="m"
+                paddingY="8"
+                paddingX="16"
+                gap="16"
+                justifyContent="space-between"
+                alignItems="center"
+            >
                 <Text
                     variant="body-default-s"
-                    onBackground="neutral-strong">
-                    <Text
-                        onBackground="neutral-weak">
+                    onBackground="neutral-strong"
+                >
+                    <Text onBackground="neutral-weak">
                         © {currentYear} /
                     </Text>
                     <Text paddingX="4">
-                        {person.name}
+                        {person.name || "Unknown"} {/* Fallback if person.name is undefined */}
                     </Text>
                     <Text onBackground="neutral-weak">
-                        
-                        / <SmartLink style={{marginLeft: '-0.125rem'}} href="https://bonesydesign.com">Bonesy Design</SmartLink>
+                        / <SmartLink style={{ marginLeft: '-0.125rem' }} href="https://bonesydesign.com">Bonesy Design</SmartLink>
                     </Text>
                 </Text>
-                <Flex
-                    gap="16">
-                    {social.map((item) => (
+                <Flex gap="16">
+                    {social.map((item) =>
                         item.link && (
                             <IconButton
                                 key={item.name}
@@ -44,12 +54,13 @@ export const Footer = () => {
                                 icon={item.icon}
                                 tooltip={item.name}
                                 size="s"
-                                variant="ghost"/>
+                                variant="ghost"
+                            />
                         )
-                    ))}
+                    )}
                 </Flex>
             </Flex>
             <Flex height="80" show="s"></Flex>
         </Flex>
-    )
-}
+    );
+};

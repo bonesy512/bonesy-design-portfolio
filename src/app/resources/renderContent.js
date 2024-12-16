@@ -1,8 +1,8 @@
-import { person, newsletter, social, home, about, blog, work, gallery, admin } from './content';
-import { createI18nContent } from './content-i18n';
 import { i18n } from './config';
+import { person, social, newsletter, home, about, blog, work, gallery, admin } from './content';
+import { createI18nContent } from './content-i18n';
 
-const renderContent = (t) => {
+export const renderContent = (t) => {
     if (i18n) {
         return createI18nContent(t);
     } else {
@@ -19,5 +19,3 @@ const renderContent = (t) => {
         };
     }
 };
-
-export { renderContent };
