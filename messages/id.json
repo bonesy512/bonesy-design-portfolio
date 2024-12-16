@@ -1,81 +1,130 @@
 {
     "person": {
-        "role": "Insinyur Desain"
+        "firstName": "Thomas",
+        "lastName": "Schustereit",
+        "role": "Graphic Designer",
+        "avatar": "/images/avatar.jpg",
+        "location": "America/Chicago",
+        "languages": ["English"]
     },
     "newsletter": {
-        "title": "Langganan Buletin {firstName}",
-        "description": "Saya sesekali menulis tentang desain, teknologi, dan berbagi pemikiran tentang persimpangan kreativitas dan rekayasa",
-        "button": "Daftar"
+        "title": "Subscribe to {firstName}'s Newsletter",
+        "description": "I occasionally write about design, technology, and share thoughts on the intersection of creativity and AI"
     },
     "home": {
-        "label": "Beranda",
-        "title": "Portofolio {name}",
-        "description": "Situs web portofolio yang menampilkan karya saya sebagai {role}",
-        "headline": "Insinyur desain dan pembangun",
-        "subline": "Saya Selene, seorang insinyur desain di FLY, di mana saya membuat pengalaman pengguna yang intuitif. Setelah jam kerja, saya mengerjakan proyek-proyek pribadi."
+        "label": "Home",
+        "title": "{name}'s Portfolio",
+        "description": "{name}'s Portfolio website showcasing his work as Bonesy Design",
+        "headline": "Bonesy Design",
+        "subline": "I'm Thomas Schustereit, the creative force behind Bonesy Design. I specialize in crafting seamless and intuitive user experiences. Outside of my professional work, I also bring my own ideas to life through personal projects."
     },
     "about": {
-        "label": "Tentang",
-        "title": "Tentang Saya",
-        "description": "Kenali {name}, {role} dari {location}",
+        "label": "About",
+        "title": "About me",
+        "description": "Meet {name}, {role} from {location}",
+        "tableOfContent": {
+            "display": true,
+            "subItems": false
+        },
+        "avatar": {
+            "display": true
+        },
+        "calendar": {
+            "display": true,
+            "link": "https://cal.com"
+        },
         "intro": {
-            "title": "Pengantar",
-            "description": "Selene adalah seorang insinyur desain yang berbasis di Jakarta dengan hasrat untuk mengubah tantangan kompleks menjadi solusi desain yang sederhana dan elegan. Karyanya meliputi antarmuka digital, pengalaman interaktif, dan pertemuan antara desain dan teknologi."
+            "display": true,
+            "title": "Introduction",
+            "description": "Thomas is a graphic designer based in the United States, driven by a passion for turning complex problems into clean, intuitive design solutions. His work spans across digital interfaces, interactive experiences, and the intersection of design and emerging technologies, always focusing on creating seamless user experiences."
         },
         "work": {
-            "title": "Pengalaman Kerja",
+            "display": true,
+            "title": "Work Experience",
             "experiences": {
-                "FLY": {
-                    "timeframe": "2022 - Sekarang",
-                    "role": "Senior Design Engineer",
-                    "achievements": "Mendesain ulang UI/UX untuk platform FLY, menghasilkan peningkatan keterlibatan pengguna sebesar 20% dan waktu muat lebih cepat sebesar 30%.;Memimpin integrasi alat AI ke dalam alur kerja desain, memungkinkan desainer untuk iterasi 50% lebih cepat."
+                "Bonesy Design": {
+                    "timeframe": "September 2014 - Present",
+                    "role": "Founder & Lead Designer",
+                    "achievements": [
+                        "Founded Bonesy Design to deliver creative solutions in UI/UX design, branding, and web development for diverse clients.",
+                        "Collaborated with clients to transform their vision into functional and visually appealing digital experiences.",
+                        "Specialized in building intuitive user interfaces and seamless user experiences across web and mobile platforms.",
+                        "Led design projects from concept through execution, providing a complete design strategy for clients, from startups to established brands.",
+                        "Developed a custom design system for multiple clients, improving consistency and user interaction by 30%."
+                    ]
                 },
-                "Creativ3": {
-                    "timeframe": "2018 - 2022",
-                    "role": "Desainer Utama",
-                    "achievements": "Mengembangkan sistem desain yang menyatukan merek di berbagai platform, meningkatkan konsistensi desain sebesar 40%.;Memimpin tim lintas fungsi untuk meluncurkan lini produk baru, berkontribusi pada peningkatan pendapatan perusahaan sebesar 15%."
+                "Certified Tree Care LLC": {
+                    "timeframe": "March 2012 - June 2024",
+                    "role": "Chief Development Officer",
+                    "achievements": [
+                        "Spearheaded IT initiatives, enhancing system efficiencies and driving digital transformation, resulting in more streamlined reporting and improved operational processes.",
+                        "Led the integration of Quickbase CRM and Encore Actsoft, increasing operational efficiency by 20% and improving data management across multiple locations.",
+                        "Developed and executed strategic business development plans, leading to substantial revenue growth and market expansion in cities such as Austin, San Antonio, Houston, Dallas, and Louisville.",
+                        "Implemented a comprehensive digital marketing strategy, including SEO, social media, and content creation, boosting online leads by 30%.",
+                        "Directed cross-functional teams and sales training programs, leveraging tools like Cardone U to enhance team performance and achieve business targets.",
+                        "Coordinated the launch of new services, diversifying the company’s offerings and increasing overall revenue streams.",
+                        "Led safety programs and risk assessments, ensuring regulatory compliance and significantly reducing incident rates."
+                    ]
                 }
             }
         },
         "studies": {
-            "title": "Pendidikan",
+            "display": false,
+            "title": "Studies",
             "institutions": {
                 "University of Jakarta": {
-                    "description": "Belajar teknik perangkat lunak."
+                    "description": "Studied software engineering."
                 },
                 "Build the Future": {
-                    "description": "Belajar pemasaran online dan personal branding."
+                    "description": "Studied online marketing and personal branding."
                 }
             }
         },
         "technical": {
-            "title": "Kemampuan Teknis",
+            "display": true,
+            "title": "Technical skills",
             "skills": {
                 "Figma": {
-                    "description": "Mampu membuat prototipe di Figma dengan Once UI dengan kecepatan luar biasa."
+                    "description": "Able to prototype in Figma with Once UI with unnatural speed."
                 },
-                "Nextjs": {
-                    "description": "Membangun aplikasi generasi berikutnya dengan Next.js + Once UI + Supabase."
+                "Next.js": {
+                    "description": "Building next gen apps with Next.js + Once UI + Supabase."
                 }
             }
         }
     },
     "blog": {
         "label": "Blog",
-        "title": "Menulis tentang desain dan teknologi...",
-        "description": "Baca apa yang {name} lakukan baru-baru ini"
+        "title": "Writing about design and tech...",
+        "description": "Read what {name} has been up to recently"
     },
     "work": {
-        "label": "Karya",
-        "title": "Proyek Saya",
-        "description": "Proyek desain dan pengembangan oleh {name}"
+        "label": "Work",
+        "title": "My projects",
+        "description": "Design and dev projects by {name}"
     },
     "gallery": {
-        "label": "Galeri",
-        "title": "Galeri Foto Saya",
-        "description": "Koleksi foto oleh {name}"
+        "label": "Gallery",
+        "title": "My photo gallery",
+        "description": "A photo collection by {name}"
     },
-    "projectCard": {
-        "label": "Baca Studi Kasus"
+    "admin": {
+        "label": "Admin",
+        "title": "Admin Dashboard",
+        "description": "Manage and monitor Project Enma AI-powered trading assistant.",
+        "sections": [
+            {
+                "title": "Live Trade Insights",
+                "description": "Track USD/JPY price updates and key performance metrics."
+            },
+            {
+                "title": "Market Sentiment",
+                "description": "Analyze sentiment trends from financial news and events."
+            },
+            {
+                "title": "Alerts",
+                "description": "Receive real-time notifications for trading opportunities."
+            }
+        ]
     }
 }
