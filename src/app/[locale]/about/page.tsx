@@ -13,14 +13,18 @@ import styles from '@/components/about/about.module.scss';
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}) {
+// Define PageProps for type safety
+type PageProps = {
+  params: {
+    locale: string;
+  };
+};
+
+export async function generateMetadata({ params }: PageProps) {
   const { locale } = params;
   const t = await getTranslations(locale);
-  const { person, about, social } = renderContent(t);
+  const { person, about } = renderContent(t);
+
   const title = about.title || 'About Us';
   const description = about.description || 'Learn more about us.';
   const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'localhost';
@@ -46,11 +50,7 @@ export async function generateMetadata({
   };
 }
 
-export default function About({
-  params,
-}: {
-  params: { locale: string };
-}) {
+export default function About({ params }: PageProps) {
   const { locale } = params;
   const t = useTranslations(locale);
   const { person, about, social } = renderContent(t);
