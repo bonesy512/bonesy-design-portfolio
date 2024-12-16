@@ -269,4 +269,24 @@ const gallery = {
     ]
 }
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const admin = {
+    label: 'Admin',
+    title: 'Admin Dashboard',
+    description: 'Manage and monitor Project Enma AI-powered trading assistant.',
+    sections: [
+        {
+            title: 'Live Trade Insights',
+            description: 'Track USD/JPY price updates and key performance metrics.',
+        },
+        {
+            title: 'Market Sentiment',
+            description: 'Analyze sentiment trends from financial news and events.',
+        },
+        {
+            title: 'Alerts',
+            description: 'Receive real-time notifications for trading opportunities.',
+        },
+    ],
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, admin };
