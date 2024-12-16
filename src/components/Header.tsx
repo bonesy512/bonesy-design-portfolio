@@ -68,7 +68,7 @@ export const Header = () => {
     }
 
     const t = useTranslations();
-    const { person, home, about, blog, work, gallery } = renderContent(t);
+    const { person, home, about, blog, work, gallery, admin } = renderContent(t);
 
     return (
         <>
@@ -143,7 +143,7 @@ export const Header = () => {
                             )}
                             { routes['/admin'] && ( // Add the Admin link
                                 <ToggleButton
-                                prefixIcon="lock" // Icon for Admin
+                                prefixIcon="admin" // Icon for Admin
                                 href={`/${params?.locale}/admin`}
                                 selected={pathname.startsWith('/admin')}>
                                 <Flex paddingX="2" hide="s">Admin</Flex>

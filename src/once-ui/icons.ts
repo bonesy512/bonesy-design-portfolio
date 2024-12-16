@@ -30,6 +30,10 @@ import {
 } from "react-icons/pi";
 
 import {
+	SiPhpmyadmin
+} from "react-icons/si";
+
+import {
 	FaDiscord,
 	FaGithub,
 	FaInstagram,
@@ -65,5 +69,6 @@ export const iconLibrary: Record<string, IconType> = {
 	instagram: FaInstagram,
 	linkedin: FaLinkedin,
 	x: FaXTwitter,
-	clipboard: HiClipboard
+	clipboard: HiClipboard,
+	admin: SiPhpmyadmin
 };
