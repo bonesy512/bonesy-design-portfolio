@@ -24,8 +24,8 @@ const social = [
     { name: "Instagram", icon: "instagram", link: "https://www.instagram.com/b0n3syeth/" },
     { name: "LinkedIn", icon: "linkedin", link: "https://www.linkedin.com/in/thomasmschustereit/" },
     { name: "X", icon: "x", link: "https://x.com/B0N3SYeth" },
-    { name: "Email", icon: "email", link: "mailto:bonesy@bonesydesign.com" },
-};
+    { name: "Email", icon: "email", link: "mailto:bonesy@bonesydesign.com" }
+];
 
 const home = {
     label: "Home",
@@ -71,4 +71,4 @@ const admin = {
     ],
 };
 
-export { person, newsletter, home, about, social, admin };
+export { person, newsletter, social, home, about, admin };
