@@ -1,5 +1,6 @@
 import { InlineCode } from "@/once-ui/components";
 
+// Define content
 const person = {
     firstName: "Thomas",
     lastName: "Schustereit",
@@ -8,15 +9,22 @@ const person = {
     },
     role: "Graphic Designer",
     avatar: "/images/avatar.jpg",
-    location: "America/Chicago", // IANA time zone identifier
-    languages: ["English"], // Leave empty if not needed
+    location: "America/Chicago",
+    languages: ["English"],
 };
 
 const newsletter = {
     display: true,
     title: `Subscribe to ${person.firstName}&#39;s Newsletter`,
-    description:
-        "I occasionally write about design, technology, and share thoughts on the intersection of creativity and AI.",
+    description: "I occasionally write about design, technology, and share thoughts on the intersection of creativity and AI.",
+};
+
+const social = [
+    { name: "GitHub", icon: "github", link: "https://github.com/bonesy512" },
+    { name: "Instagram", icon: "instagram", link: "https://www.instagram.com/b0n3syeth/" },
+    { name: "LinkedIn", icon: "linkedin", link: "https://www.linkedin.com/in/thomasmschustereit/" },
+    { name: "X", icon: "x", link: "https://x.com/B0N3SYeth" },
+    { name: "Email", icon: "email", link: "mailto:bonesy@bonesydesign.com" },
 };
 
 const home = {
@@ -63,4 +71,4 @@ const admin = {
     ],
 };
 
-export { person, newsletter, home, about, admin, social, blog, work, gallery };
+export { person, newsletter, home, about, social, admin };
