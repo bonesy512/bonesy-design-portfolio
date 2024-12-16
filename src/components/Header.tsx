@@ -103,45 +103,53 @@ export const Header = () => {
                             textVariant="body-default-s">
                             { routes['/'] && (
                                 <ToggleButton
-                                    prefixIcon="home"
-                                    href={`/${params?.locale}`}
-                                    selected={pathname === "/"}>
-                                    <Flex paddingX="2" hide="s">{home.label}</Flex>
+                                prefixIcon="home"
+                                href={`/${params?.locale}`}
+                                selected={pathname === "/"}>
+                                <Flex paddingX="2" hide="s">{home.label}</Flex>
                                 </ToggleButton>
                             )}
                             { routes['/about'] && (
                                 <ToggleButton
-                                    prefixIcon="person"
-                                    href={`/${params?.locale}/about`}
-                                    selected={pathname === "/about"}>
-                                    <Flex paddingX="2" hide="s">{about.label}</Flex>
+                                prefixIcon="person"
+                                href={`/${params?.locale}/about`}
+                                selected={pathname === "/about"}>
+                                <Flex paddingX="2" hide="s">{about.label}</Flex>
                                 </ToggleButton>
                             )}
                             { routes['/work'] && (
                                 <ToggleButton
-                                    prefixIcon="grid"
-                                    href={`/${params?.locale}/work`}
-                                    selected={pathname.startsWith('/work')}>
-                                    <Flex paddingX="2" hide="s">{work.label}</Flex>
+                                prefixIcon="grid"
+                                href={`/${params?.locale}/work`}
+                                selected={pathname.startsWith('/work')}>
+                                <Flex paddingX="2" hide="s">{work.label}</Flex>
                                 </ToggleButton>
                             )}
                             { routes['/blog'] && (
                                 <ToggleButton
-                                    prefixIcon="book"
-                                    href={`/${params?.locale}/blog`}
-                                    selected={pathname.startsWith('/blog')}>
-                                    <Flex paddingX="2" hide="s">{blog.label}</Flex>
+                                prefixIcon="book"
+                                href={`/${params?.locale}/blog`}
+                                selected={pathname.startsWith('/blog')}>
+                                <Flex paddingX="2" hide="s">{blog.label}</Flex>
                                 </ToggleButton>
                             )}
                             { routes['/gallery'] && (
                                 <ToggleButton
-                                    prefixIcon="gallery"
-                                    href={`/${params?.locale}/gallery`}
-                                    selected={pathname.startsWith('/gallery')}>
-                                    <Flex paddingX="2" hide="s">{gallery.label}</Flex>
+                                prefixIcon="gallery"
+                                href={`/${params?.locale}/gallery`}
+                                selected={pathname.startsWith('/gallery')}>
+                                <Flex paddingX="2" hide="s">{gallery.label}</Flex>
                                 </ToggleButton>
                             )}
-                        </Flex>
+                            { routes['/admin'] && ( // Add the Admin link
+                                <ToggleButton
+                                prefixIcon="lock" // Icon for Admin
+                                href={`/${params?.locale}/admin`}
+                                selected={pathname.startsWith('/admin')}>
+                                <Flex paddingX="2" hide="s">Admin</Flex>
+                                </ToggleButton>
+                            )}
+                            </Flex>
                     </Flex>
                 </Flex>
                 <Flex fillWidth justifyContent="flex-end" alignItems="center">
