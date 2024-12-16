@@ -13,15 +13,12 @@ import styles from '@/components/about/about.module.scss';
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 
-// Define PageProps for type safety
-type PageProps = {
-  params: {
-    locale: string;
-  };
-};
-
-export async function generateMetadata({ params }: PageProps) {
-  const { locale } = params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Record<string, string>; // Adjusted to a generic record type
+}) {
+  const locale = params.locale || 'en'; // Default to 'en' if locale is missing
   const t = await getTranslations(locale);
   const { person, about } = renderContent(t);
 
@@ -50,8 +47,12 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default function About({ params }: PageProps) {
-  const { locale } = params;
+export default function About({
+  params,
+}: {
+  params: Record<string, string>; // Adjusted to a generic record type
+}) {
+  const locale = params.locale || 'en';
   const t = useTranslations(locale);
   const { person, about, social } = renderContent(t);
 
