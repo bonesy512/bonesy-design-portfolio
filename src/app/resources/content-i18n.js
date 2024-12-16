@@ -1,5 +1,6 @@
 import { InlineCode } from "@/once-ui/components";
 
+// Define content
 const person = {
     firstName: "Thomas",
     lastName: "Schustereit",
@@ -8,15 +9,14 @@ const person = {
     },
     role: "Graphic Designer",
     avatar: "/images/avatar.jpg",
-    location: "America/Chicago", // IANA time zone identifier
-    languages: ["English"], // Leave empty if not needed
+    location: "America/Chicago",
+    languages: ["English"],
 };
 
 const newsletter = {
     display: true,
     title: `Subscribe to ${person.firstName}&#39;s Newsletter`,
-    description:
-        "I occasionally write about design, technology, and share thoughts on the intersection of creativity and AI.",
+    description: "I occasionally write about design, technology, and share thoughts on the intersection of creativity and AI.",
 };
 
 const social = [
@@ -71,4 +71,4 @@ const admin = {
     ],
 };
 
-export { person, social, newsletter, home, about, createI18nContent, social, work, gallery, blog, admin };
+export { person, newsletter, home, about, social, admin };
