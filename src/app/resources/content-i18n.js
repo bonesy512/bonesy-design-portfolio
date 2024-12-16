@@ -71,4 +71,4 @@ const admin = {
     ],
 };
 
-export { person, social, newsletter, home, about, admin };
+export { person, social, newsletter, home, about, createI18nContent, social, work, gallery, blog, admin };
