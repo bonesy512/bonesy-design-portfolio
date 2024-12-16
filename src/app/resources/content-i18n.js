@@ -1,74 +1,68 @@
 import { InlineCode } from "@/once-ui/components";
 
-// Define content
-const person = {
-    firstName: "Thomas",
-    lastName: "Schustereit",
-    get name() {
-        return `${this.firstName} ${this.lastName}`;
-    },
-    role: "Graphic Designer",
-    avatar: "/images/avatar.jpg",
-    location: "America/Chicago",
-    languages: ["English"],
-};
+const createI18nContent = (t) => {
+    const person = {
+        firstName: "Thomas",
+        lastName: "Schustereit",
+        get name() {
+            return `${this.firstName} ${this.lastName}`;
+        },
+        role: t("person.role"),
+        avatar: "/images/avatar.jpg",
+        location: "America/Chicago",
+        languages: ["English"],
+    };
 
-const newsletter = {
-    display: true,
-    title: `Subscribe to ${person.firstName}&#39;s Newsletter`,
-    description: "I occasionally write about design, technology, and share thoughts on the intersection of creativity and AI.",
-};
+    const social = [
+        { name: "GitHub", icon: "github", link: "https://github.com/bonesy512" },
+        { name: "Instagram", icon: "instagram", link: "https://www.instagram.com/b0n3syeth/" },
+        { name: "LinkedIn", icon: "linkedin", link: "https://www.linkedin.com/in/thomasmschustereit/" },
+        { name: "X", icon: "x", link: "https://x.com/B0N3SYeth" },
+        { name: "Email", icon: "email", link: "mailto:bonesy@bonesydesign.com" },
+    ];
 
-const social = [
-    { name: "GitHub", icon: "github", link: "https://github.com/bonesy512" },
-    { name: "Instagram", icon: "instagram", link: "https://www.instagram.com/b0n3syeth/" },
-    { name: "LinkedIn", icon: "linkedin", link: "https://www.linkedin.com/in/thomasmschustereit/" },
-    { name: "X", icon: "x", link: "https://x.com/B0N3SYeth" },
-    { name: "Email", icon: "email", link: "mailto:bonesy@bonesydesign.com" },
-];
-
-const home = {
-    label: "Home",
-    title: `${person.name}&#39;s Portfolio`,
-    description: `${person.name}&#39;s portfolio showcasing his work at Bonesy Design.`,
-    headline: "Bonesy Design",
-    subline: (
-        <>
-            I&#39;m {person.name}, the creative force behind <InlineCode>Bonesy Design</InlineCode>. 
-            I specialize in crafting seamless user experiences and bringing innovative ideas to life.
-        </>
-    ),
-};
-
-const about = {
-    label: "About",
-    title: "About Me",
-    description: `Meet ${person.name}, ${person.role} from ${person.location}.`,
-    tableOfContent: { display: true, subItems: false },
-    avatar: { display: true },
-    calendar: { display: true, link: "https://cal.com" },
-    intro: {
+    const newsletter = {
         display: true,
-        title: "Introduction",
-        description: (
-            <>
-                {person.name} is a graphic designer based in the United States, driven by a passion 
-                for turning complex problems into clean, intuitive design solutions. His work spans 
-                across digital interfaces, interactive experiences, and design innovation.
-            </>
-        ),
-    },
+        title: t("newsletter.title", { firstName: person.firstName }),
+        description: t("newsletter.description"),
+    };
+
+    const about = {
+        label: t("about.label"),
+        title: t("about.title"),
+        description: t("about.description", {
+            name: person.name,
+            role: person.role,
+            location: person.location,
+        }),
+    };
+
+    const blog = {
+        label: t("blog.label"),
+        title: t("blog.title"),
+        description: t("blog.description", { name: person.name }),
+    };
+
+    const work = {
+        label: t("work.label"),
+        title: t("work.title"),
+        description: t("work.description", { name: person.name }),
+    };
+
+    const gallery = {
+        label: t("gallery.label"),
+        title: t("gallery.title"),
+        description: t("gallery.description", { name: person.name }),
+    };
+
+    const admin = {
+        label: t("admin.label"),
+        title: t("admin.title"),
+        description: t("admin.description"),
+    };
+
+    return { person, social, newsletter, about, blog, work, gallery, admin };
 };
 
-const admin = {
-    label: "Admin",
-    title: "Admin Dashboard",
-    description: "Manage and monitor your projects.",
-    sections: [
-        { title: "Live Trade Insights", description: "Track trading updates and key performance metrics." },
-        { title: "Market Sentiment", description: "Analyze sentiment trends from financial news." },
-        { title: "Alerts", description: "Receive notifications for opportunities." },
-    ],
-};
-
-export { person, newsletter, home, about, social, admin };
+// Export all content
+export { createI18nContent };
