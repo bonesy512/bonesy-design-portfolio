@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import Image from 'next/image'; // Use Next.js image optimization
 import { baseURL } from '@/app/resources';
 import { getTranslations } from 'next-intl/server';
 import { createI18nContent } from '@/app/resources/content-i18n';
@@ -10,11 +11,15 @@ export async function GET(request: Request) {
     const title = url.searchParams.get('title') || 'Portfolio';
 
     try {
-        // Load font
-        const font = fetch(
+        // Load font with error handling
+        const fontData = await fetch(
             new URL('../../../public/fonts/Inter.ttf', import.meta.url)
-        ).then((res) => res.arrayBuffer());
-        const fontData = await font;
+        ).then((res) => {
+            if (!res.ok) {
+                throw new Error('Failed to load font');
+            }
+            return res.arrayBuffer();
+        });
 
         // Load translations
         const t = await getTranslations();
@@ -62,12 +67,12 @@ export async function GET(request: Request) {
                                 alignItems: 'center',
                                 gap: '5rem',
                             }}>
-                            <img
+                            <Image
                                 src={`https://${baseURL}${person.avatar}`}
                                 alt={`${person.name}'s avatar`}
+                                width={192}
+                                height={192}
                                 style={{
-                                    width: '12rem',
-                                    height: '12rem',
                                     objectFit: 'cover',
                                     borderRadius: '100%',
                                 }}
