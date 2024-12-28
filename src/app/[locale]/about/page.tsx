@@ -18,10 +18,9 @@ import { useTranslations } from 'next-intl';
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string } | Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const resolvedParams = await params;
-  const locale = resolvedParams.locale || 'en';
+  const locale = params.locale || 'en';
 
   const t = await getTranslations(locale);
   const { person, about } = renderContent(t);
@@ -53,15 +52,15 @@ export async function generateMetadata({
   };
 }
 
-export default async function About({
+export default function About({
   params,
 }: {
-  params: { locale: string } | Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const resolvedParams = await params;
-  const locale = resolvedParams.locale || 'en';
+  const { locale } = params;
   unstable_setRequestLocale(locale);
 
+  // Moved hook usage outside of async logic
   const t = useTranslations(locale);
   const { person, about, social } = renderContent(t);
 
