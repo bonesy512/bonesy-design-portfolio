@@ -4,31 +4,26 @@ import {
   Flex,
   Heading,
   Icon,
+  IconButton,
+  SmartImage,
   Tag,
   Text,
 } from '@/once-ui/components';
-import { renderContent } from '@/app/resources/renderContent';
+import { baseURL, renderContent } from '@/app/resources';
 import TableOfContents from '@/components/about/TableOfContents';
 import styles from '@/components/about/about.module.scss';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 
-// Ensure `params` is typed correctly based on the dynamic route
-interface AboutPageProps {
-  params: {
-    locale: string; // Replace with the actual dynamic segment if needed
-  };
-}
-
-export async function generateMetadata({ params }: AboutPageProps) {
-  const locale = params.locale || 'en'; // Default to 'en' if locale is missing
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   const t = await getTranslations(locale);
   const { person, about } = renderContent(t);
-
-  const title = about.title || 'About Us';
-  const description = about.description || 'Learn more about us.';
-  const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'localhost';
-
+  const title = about.title;
+  const description = about.description;
   const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
 
   return {
@@ -39,7 +34,12 @@ export async function generateMetadata({ params }: AboutPageProps) {
       description,
       type: 'website',
       url: `https://${baseURL}/${locale}/about`,
-      images: [{ url: ogImage, alt: title }],
+      images: [
+        {
+          url: ogImage,
+          alt: title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -50,8 +50,12 @@ export async function generateMetadata({ params }: AboutPageProps) {
   };
 }
 
-export default function About({ params }: AboutPageProps) {
-  const locale = params.locale || 'en';
+export default function About({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
   const t = useTranslations(locale);
   const { person, about, social } = renderContent(t);
 
@@ -64,17 +68,17 @@ export default function About({ params }: AboutPageProps) {
     {
       title: about.work.title,
       display: about.work.display,
-      items: about.work.experiences.map((e) => e.company),
+      items: about.work.experiences.map((experience) => experience.company),
     },
     {
       title: about.studies.title,
       display: about.studies.display,
-      items: about.studies.institutions.map((i) => i.name),
+      items: about.studies.institutions.map((institution) => institution.name),
     },
     {
       title: about.technical.title,
       display: about.technical.display,
-      items: about.technical.skills.map((s) => s.title),
+      items: about.technical.skills.map((skill) => skill.title),
     },
   ];
 
@@ -90,11 +94,11 @@ export default function About({ params }: AboutPageProps) {
             name: person.name,
             jobTitle: person.role,
             description: about.intro.description,
-            url: `https://${process.env.NEXT_PUBLIC_BASE_URL}/about`,
-            image: `${process.env.NEXT_PUBLIC_BASE_URL}${person.avatar}`,
+            url: `https://${baseURL}/about`,
+            image: `${baseURL}/images/${person.avatar}`,
             sameAs: social
-              .filter((s) => s.link && !s.link.startsWith('mailto:'))
-              .map((s) => s.link),
+              .filter((item) => item.link && !item.link.startsWith('mailto:'))
+              .map((item) => item.link),
             worksFor: {
               '@type': 'Organization',
               name: about.work.experiences[0]?.company || '',
@@ -104,6 +108,7 @@ export default function About({ params }: AboutPageProps) {
       />
       {about.tableOfContent.display && (
         <Flex
+          style={{ left: '0', top: '50%', transform: 'translateY(-50%)' }}
           position="fixed"
           paddingLeft="24"
           gap="32"
@@ -116,6 +121,7 @@ export default function About({ params }: AboutPageProps) {
       <Flex fillWidth mobileDirection="column" justifyContent="center">
         {about.avatar.display && (
           <Flex
+            className={styles.avatar}
             minWidth="160"
             paddingX="l"
             paddingBottom="xl"
