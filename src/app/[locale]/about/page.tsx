@@ -13,11 +13,14 @@ import styles from '@/components/about/about.module.scss';
 import { getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Record<string, string>; // Adjusted to a generic record type
-}) {
+// Ensure `params` is typed correctly based on the dynamic route
+interface AboutPageProps {
+  params: {
+    locale: string; // Replace with the actual dynamic segment if needed
+  };
+}
+
+export async function generateMetadata({ params }: AboutPageProps) {
   const locale = params.locale || 'en'; // Default to 'en' if locale is missing
   const t = await getTranslations(locale);
   const { person, about } = renderContent(t);
@@ -47,11 +50,7 @@ export async function generateMetadata({
   };
 }
 
-export default function About({
-  params,
-}: {
-  params: Record<string, string>; // Adjusted to a generic record type
-}) {
+export default function About({ params }: AboutPageProps) {
   const locale = params.locale || 'en';
   const t = useTranslations(locale);
   const { person, about, social } = renderContent(t);
