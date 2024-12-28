@@ -16,10 +16,13 @@ import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: { locale: string } | Promise<{ locale: string }>;
 }) {
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale || 'en';
+
   const t = await getTranslations(locale);
   const { person, about } = renderContent(t);
   const title = about.title;
@@ -50,12 +53,15 @@ export async function generateMetadata({
   };
 }
 
-export default function About({
-  params: { locale },
+export default async function About({
+  params,
 }: {
-  params: { locale: string };
+  params: { locale: string } | Promise<{ locale: string }>;
 }) {
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale || 'en';
   unstable_setRequestLocale(locale);
+
   const t = useTranslations(locale);
   const { person, about, social } = renderContent(t);
 
